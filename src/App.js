@@ -1,24 +1,51 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { Home } from './components/common/Home/Home';
+import { Route, Routes } from 'react-router';
+import { store } from './components/common/Store';
+import { Provider } from 'react-redux';
+import { ProductDetails } from './components/common/Product/ProductDetails';
+import { Header } from './components/common/Header/Header';
+import { Cart } from './components/user/Cart/Cart';
+import Alert from './components/common/Alert';
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { CheckOut } from './components/user/Checkout/CheckOut';
+import { Login } from './components/user/Auth/Login';
+import { Register } from './components/user/Auth/Register';
 function App() {
+  const [alert, setalert] = useState(null);
+  const showAlert = (type, message) => {
+    setalert(
+      // used an object inside this
+      { type: type, message: message }
+    );
+    setTimeout(() => {
+      setalert(null);
+  }, 1500);
+    console.log(alert)
+  };
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   
+   <Provider store = {store}>
+    <Header/>
+    <Alert alert = {alert}/>
+    
+    <ToastContainer/>
+   <Routes>
+   <Route path={'/'} element = {<Home/>}/>
+   <Route path={"/product/getproduct/:id"} element={<ProductDetails/>} />
+   <Route path={'/cart'} element = {<Cart/>}/>
+   <Route path={'/user/checkout'} element = {<CheckOut/>}/>
+
+   <Route path={'/user/login'} element = {<Login alert = {alert} showAlert = {showAlert}/>}/>
+    <Route path={'/user/adduser'} element = {<Register alert = {alert} showAlert = {showAlert}/>}/>
+   </Routes>
+   </Provider>
+   </>
   );
 }
 

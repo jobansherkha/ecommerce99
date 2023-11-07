@@ -1,0 +1,27 @@
+.App {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .slider {
+    overflow: hidden;
+    width: 70%;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .slider img {
+    width: 60%px;
+    transition: transform 0.5s ease;
+  }
+  
+  .slider-button {
+    padding: 10px;
+    cursor: pointer;
+    background: #3498db;
+    color: white;
+    border: none;
+    margin: 0 10px;
+  }
+  
+  
