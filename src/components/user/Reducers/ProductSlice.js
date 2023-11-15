@@ -5,7 +5,7 @@ export const fetchProducts = createAsyncThunk(
   async () => {
     try { 
       const response = await axios.get(
-        "http://localhost:3002/product/getproduct"
+        "https://backend1-hpb2.onrender.com/product/getproduct"
       );
       return response.data;
     } catch (error) {

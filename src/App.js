@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CheckOut } from './components/user/Checkout/CheckOut';
 import { Login } from './components/user/Auth/Login';
 import { Register } from './components/user/Auth/Register';
+import { Orders } from './components/user/Orders';
 function App() {
   const [alert, setalert] = useState(null);
   const showAlert = (type, message) => {
@@ -43,6 +44,7 @@ function App() {
 
    <Route path={'/user/login'} element = {<Login alert = {alert} showAlert = {showAlert}/>}/>
     <Route path={'/user/adduser'} element = {<Register alert = {alert} showAlert = {showAlert}/>}/>
+    <Route path={'/user/orders'} element = {<Orders/>}/>
    </Routes>
    </Provider>
    </>

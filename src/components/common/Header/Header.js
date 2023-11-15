@@ -29,6 +29,7 @@ export const Header = () => {
 
   // Render the Header component
   return (
+    
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
             <div className="container">
@@ -56,8 +57,15 @@ export const Header = () => {
                     {!localStorage.getItem("token") ?
                        <div> <NavLink to="/user/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Login</NavLink>
                         <NavLink to="/user/adduser" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Register</NavLink></div>:
-                        <NavLink to="/user/login" onClick={Logout} className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Logout</NavLink>}
-                        <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i> Cart ({totalCartItems() || 0}) </NavLink>
+                       
+                        <NavLink to="/user/login" onClick={Logout} className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Logout</NavLink>
+                        
+                        }
+                        <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i><span class="material-symbols-outlined">shopping_cart</span> ({totalCartItems() || 0}) </NavLink>
+                        {!localStorage.getItem("token") ? "": <button class="user-icon-button">
+    <img src="https://cdn-icons-png.flaticon.com/512/61/61205.png" alt="User Icon"/>
+  </button>}
+
                     </div>
                 </div>
 
