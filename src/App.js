@@ -15,6 +15,8 @@ import { CheckOut } from './components/user/Checkout/CheckOut';
 import { Login } from './components/user/Auth/Login';
 import { Register } from './components/user/Auth/Register';
 import { Orders } from './components/user/Orders';
+import { MyAccount } from './components/common/Account/MyAccount';
+import { ProductList } from './components/common/Product/ProductList';
 function App() {
   const [alert, setalert] = useState(null);
   const showAlert = (type, message) => {
@@ -38,6 +40,7 @@ function App() {
     <ToastContainer/>
    <Routes>
    <Route path={'/'} element = {<Home/>}/>
+   <Route path={'/products'} element = {<ProductList/>}/>
    <Route path={"/product/getproduct/:id"} element={<ProductDetails/>} />
    <Route path={'/cart'} element = {<Cart/>}/>
    <Route path={'/user/checkout'} element = {<CheckOut/>}/>
@@ -45,6 +48,8 @@ function App() {
    <Route path={'/user/login'} element = {<Login alert = {alert} showAlert = {showAlert}/>}/>
     <Route path={'/user/adduser'} element = {<Register alert = {alert} showAlert = {showAlert}/>}/>
     <Route path={'/user/orders'} element = {<Orders/>}/>
+    <Route path={'/user/myaccount'} element = {<MyAccount/>}/>
+
    </Routes>
    </Provider>
    </>

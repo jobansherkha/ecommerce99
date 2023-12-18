@@ -32,21 +32,25 @@ const login = async (email, password) => {
 
   const json = await response.json();
   console.log(json);
-  if ( json.user.role === "admin"){
-     props.showAlert("success", "your are successfully logged in ")
-      localStorage.setItem("token", json.authtoken)
-      
-      history("/admin/dashboard")
-
-  }
-  else if (json.user.role === "user") {
-    props.showAlert("success", "your are successfully logged in ")
+  if ( json.success){
+    if(json.user.role === "admin"){
+        props.showAlert("success", "your are successfully logged in ")
+        localStorage.setItem("token", json.authtoken)
+        localStorage.setItem("user", JSON.stringify(json.user))
+        history("/admin/dashboard")
+    }
+    else{
+        props.showAlert("success", "your are successfully logged in ")
     localStorage.setItem("token", json.authtoken)
+    localStorage.setItem("user", JSON.stringify(json.user))
     history("/")
-   
+    }
+     
+
   }
   else{
     props.showAlert("danger", json.error)
+    
   }
  
     

@@ -29,9 +29,9 @@ export const Header = () => {
 
   // Render the Header component
   return (
-    
+
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
+      <nav className="navbar navbar-expand-xl navbar-light bg-light py-3 sticky-top">
             <div className="container">
                 <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/"> React Ecommerce</NavLink>
                 <button className="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@ export const Header = () => {
                             <NavLink className="nav-link"  to="/">Home </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/product">Products</NavLink>
+                            <NavLink className="nav-link" to="/products">Products</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/aboutus"> About us</NavLink>
@@ -62,11 +62,12 @@ export const Header = () => {
                         
                         }
                         <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i><span class="material-symbols-outlined">shopping_cart</span> ({totalCartItems() || 0}) </NavLink>
-                        {!localStorage.getItem("token") ? "": <button class="user-icon-button">
+                        {!localStorage.getItem("token") ? "":<NavLink  to="/user/myaccount"> <button class="user-icon-button">
     <img src="https://cdn-icons-png.flaticon.com/512/61/61205.png" alt="User Icon"/>
-  </button>}
+  </button></NavLink>}
 
                     </div>
+                    
                 </div>
 
 

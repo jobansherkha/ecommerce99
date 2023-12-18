@@ -4,7 +4,12 @@ import axios from "axios";
 export const fetchOrders = createAsyncThunk("/fetchorders", async () => {
   try {
     const response = await axios.get(
-      "https://backend1-hpb2.onrender.com/getuserorder"
+      "https://backend1-hpb2.onrender.com/getuserorder", {
+        headers: {
+          'token': localStorage.getItem('token'),
+          'Content-Type': 'application/json',
+          // Add any other headers you need
+        }}
     );
     return response.data;
   } catch (error) {
