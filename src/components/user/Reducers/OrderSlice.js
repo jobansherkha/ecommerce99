@@ -16,6 +16,21 @@ export const fetchOrders = createAsyncThunk("/fetchorders", async () => {
     throw error;
   }
 });
+export const fetchAllOrders = createAsyncThunk("/fetchAllorders", async () => {
+  try {
+    const response = await axios.get(
+      "https://backend1-hpb2.onrender.com/getorder", {
+        headers: {
+          
+          'Content-Type': 'application/json',
+          // Add any other headers you need
+        }}
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+});
 
 export const OrderSlice = createSlice({
   name: "Order",
@@ -35,6 +50,17 @@ export const OrderSlice = createSlice({
         state.orders = action.payload;
       })
       .addCase(fetchOrders.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchAllOrders.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAllOrders.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.orders = action.payload;
+      })
+      .addCase(fetchAllOrders.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

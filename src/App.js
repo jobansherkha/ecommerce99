@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Home } from './components/common/Home/Home';
-import { Route, Routes } from 'react-router';
+import { Route, Routes, useLocation } from 'react-router';
 import { store } from './components/common/Store';
 import { Provider } from 'react-redux';
 import { ProductDetails } from './components/common/Product/ProductDetails';
@@ -17,7 +17,13 @@ import { Register } from './components/user/Auth/Register';
 import { Orders } from './components/user/Orders';
 import { MyAccount } from './components/common/Account/MyAccount';
 import { ProductList } from './components/common/Product/ProductList';
+import { MainLayout } from './components/admin/mainLayout/MainLayout';
+import { Products } from './components/admin/components/products/Products';
+import { Sidebar } from './components/admin/sidebar/Sidebar';
+import { AddProduct } from './components/admin/components/addproducts/AddProducts';
+import { AllOrders } from './components/admin/components/orders/AllOrders';
 function App() {
+  
   const [alert, setalert] = useState(null);
   const showAlert = (type, message) => {
     setalert(
@@ -35,6 +41,7 @@ function App() {
    
    <Provider store = {store}>
     <Header/>
+    
     <Alert alert = {alert}/>
     
     <ToastContainer/>
@@ -49,6 +56,11 @@ function App() {
     <Route path={'/user/adduser'} element = {<Register alert = {alert} showAlert = {showAlert}/>}/>
     <Route path={'/user/orders'} element = {<Orders/>}/>
     <Route path={'/user/myaccount'} element = {<MyAccount/>}/>
+
+    <Route path = {'/admin/products'} element = {<Products/>}/>
+    <Route path={'/admin/addProduct'} element = {<AddProduct/>}/>
+    <Route path={'/admin/orders'} element = {<AllOrders/>}/>
+  
 
    </Routes>
    </Provider>

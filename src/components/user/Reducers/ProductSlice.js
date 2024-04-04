@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
@@ -13,6 +15,33 @@ export const fetchProducts = createAsyncThunk(
     }
   }
 );
+
+export const deleteProduct = createAsyncThunk(
+    "products/deleteProduct",
+    async (productId, thunkAPI) => {
+      try {
+        // Perform the DELETE API request
+        await axios.delete(`https://backend1-hpb2.onrender.com/product/delete/${productId}`);
+  
+        // Return the product ID to be used in the success reducer
+        return productId;
+      } catch (error) {
+        // Thunk will automatically dispatch the failure action if an error occurs
+        throw error;
+      }
+    }
+  );
+
+  export const addItemAsync = createAsyncThunk(
+    "items/addItemAsync",
+    async (product) => {
+      const response = await axios.post(
+        "https://backend1-hpb2.onrender.com/product/addproduct",
+        product
+      );
+      return response.data;
+    }
+  );
 
 export const ProductSlice = createSlice({
   name: "product",

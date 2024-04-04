@@ -51,7 +51,7 @@ export const CheckOut = (props) => {
       "Content-Type": "application/json", // Example: Specify content type
     };
     axios
-      .post("http://localhost:3002/neworder", CheckOutData, { headers })
+      .post("https://backend1-hpb2.onrender.com/neworder", CheckOutData, { headers })
       .then((response) => {
         // Handle success
         console.log("order successfull:", response.data);
@@ -176,6 +176,23 @@ export const CheckOut = (props) => {
                         Please enter a valid email address for shipping updates.
                       </div>
                     </div>
+                    <div className="col-12 my-1">
+                      <label for="email" className="form-label">
+                        Mobile
+                      </label>
+                      <input
+                         type="text"
+                         id="phone"
+                         name="phone"
+                         class="form-control"
+                         required
+                         value={CheckOutData.phone}
+                         onChange={onChange}
+                      />
+                      <div className="invalid-feedback">
+                        Please enter phone number
+                      </div>
+                    </div>
 
                     <div className="col-12 my-1">
                       <label for="address" className="form-label">
@@ -276,7 +293,7 @@ export const CheckOut = (props) => {
                 <button
                   className="w-100 btn btn-primary "
                   type="submit"
-                  disabled
+                  onClick={handleClick}
                 >
                   Continue to checkout
                 </button>

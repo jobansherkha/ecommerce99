@@ -16,6 +16,8 @@ export const ProductList = () => {
     console.log(cart);
   };
 
+ 
+
   const itemsPerPage = 5;
   return (
     <>
