@@ -32,7 +32,7 @@ export const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-xl navbar-light bg-light py-3 sticky-top">
-        <Sidebar />
+       
         {/* {isAdminRoute ?  <Sidebar/> : null} */}
         <div className="container bg-light">
           <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/">
