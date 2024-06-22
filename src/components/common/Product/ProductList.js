@@ -8,7 +8,9 @@ import Slider, { FeaturedSlider } from "../Sliders/FeaturedSlider";
 
 export const ProductList = () => {
   const { products } = useSelector((state) => state.product);
+  console.log(products)
   const [loading, setLoading] = useState(true);
+  console.log(loading)
   const data = Array.isArray(products) ? products : [];
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
@@ -20,11 +22,11 @@ export const ProductList = () => {
   useEffect(() => {
     // Simulate a data fetch
     
-      if (products) {
+      if (products.length > 0) {
         setLoading(false);
       }
     
-  }, []);
+  }, [products]);
 
   const itemsPerPage = 5;
   return (
