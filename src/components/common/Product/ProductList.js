@@ -19,11 +19,11 @@ export const ProductList = () => {
   };
   useEffect(() => {
     // Simulate a data fetch
-    setTimeout(() => {
-      if (data) {
+    
+      if (products) {
         setLoading(false);
       }
-    }, 3000);
+    
   }, []);
 
   const itemsPerPage = 5;
@@ -37,9 +37,20 @@ export const ProductList = () => {
           </div>
         </div>
         <div className="row justify-content-center">
-          {data
-            ?
-            data.map((product) => {
+          {loading
+            ?<><div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div></>
+            : data.map((product) => {
                 return (
                   <ProductItem
                     data={product}
@@ -52,18 +63,7 @@ export const ProductList = () => {
                     click={click}
                   />
                 );
-              }):<><div class="spinner-grow text-primary" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-secondary" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-success" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-            <div class="spinner-grow text-danger" role="status">
-              <span class="sr-only">Loading...</span>
-            </div></>}
+              })}
         </div>
       </div>
 
